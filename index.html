@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haven — The Art of Happiness</title>
+<meta name="description" content="Haven is a calm, modern exploration of happiness, meaningful connection, gratitude and everyday wellbeing.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root{
+ --ink:#18251f; --muted:#66736d; --cream:#f7f4ec; --paper:#fffdf8;
+ --sage:#9fb8a8; --deep:#29483b; --gold:#d7a84d; --line:rgba(24,37,31,.10);
+ --shadow:0 24px 70px rgba(30,49,40,.11); --radius:28px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--cream);line-height:1.65}
+a{text-decoration:none;color:inherit}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1160px,calc(100% - 44px));margin:auto}
+.nav{position:fixed;z-index:100;top:18px;left:50%;transform:translateX(-50%);width:min(1110px,calc(100% - 30px));background:rgba(255,253,248,.84);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 35px rgba(24,37,31,.08);border-radius:999px}
+.nav-inner{height:68px;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
+.brand-mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--deep);color:#fff;font-size:17px}
+.nav-links{display:flex;gap:27px;color:#58655f;font-weight:600;font-size:.92rem}
+.nav-links a{transition:.2s}.nav-links a:hover{color:var(--deep)}
+.nav-cta{padding:10px 17px;border-radius:999px;background:var(--deep);color:#fff;font-weight:700;font-size:.88rem}
+.menu{display:none;border:0;background:none;font-size:1.45rem;color:var(--ink)}
+.hero{min-height:900px;position:relative;overflow:hidden;display:flex;align-items:center;padding:140px 0 90px;background:
+ radial-gradient(circle at 76% 31%,rgba(215,168,77,.20),transparent 24%),
+ radial-gradient(circle at 12% 70%,rgba(159,184,168,.22),transparent 28%),var(--cream)}
+.hero:after{content:"";position:absolute;width:580px;height:580px;border:1px solid rgba(41,72,59,.09);border-radius:50%;right:-190px;top:150px}
+.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:70px;position:relative;z-index:2}
+.kicker{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:800;color:#7c6a43;margin-bottom:22px}
+.kicker:before{content:"";width:34px;height:1px;background:var(--gold)}
+h1,h2{font-family:"Playfair Display",serif;font-weight:600;letter-spacing:-.04em}
+h1{font-size:clamp(4rem,7vw,7rem);line-height:.91;max-width:690px}
+.hero h1 em{font-style:italic;color:var(--deep)}
+.hero-copy{font-size:1.12rem;color:var(--muted);max-width:590px;margin:28px 0 32px}
+.actions{display:flex;gap:12px;align-items:center}
+.btn{border:0;border-radius:999px;padding:14px 21px;font-weight:800;transition:.22s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-2px)}
+.primary{background:var(--deep);color:#fff;box-shadow:0 12px 25px rgba(41,72,59,.2)}
+.secondary{background:transparent;color:var(--deep);border:1px solid var(--line)}
+.hero-note{display:flex;align-items:center;gap:12px;margin-top:34px;color:#78837e;font-size:.84rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.visual{position:relative;min-height:580px}
+.sun{position:absolute;width:410px;height:410px;border-radius:50%;background:linear-gradient(145deg,#fff8db,#f0dfae);right:40px;top:40px;box-shadow:inset -25px -25px 70px rgba(215,168,77,.15)}
+.sun:before{content:"";position:absolute;inset:35px;border:1px solid rgba(41,72,59,.09);border-radius:50%}
+.quote-card{position:absolute;left:0;bottom:55px;width:330px;padding:28px;background:rgba(255,253,248,.92);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.9);border-radius:24px;box-shadow:var(--shadow)}
+.quote-card .small{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:#8b7550;font-weight:800}
+.quote-card p{font-family:"Playfair Display",serif;font-size:1.55rem;line-height:1.25;margin:13px 0}
+.quote-card span{font-size:.78rem;color:var(--muted)}
+.orbit{position:absolute;width:500px;height:500px;border:1px solid rgba(41,72,59,.13);border-radius:50%;right:-5px;top:-10px;transform:rotate(-18deg)}
+.orbit:after{content:"✦";position:absolute;left:46px;top:28px;color:var(--gold);font-size:25px}
+.floating{position:absolute;right:0;bottom:0;background:var(--deep);color:#fff;padding:17px 20px;border-radius:18px;box-shadow:var(--shadow);font-size:.84rem}
+section{padding:115px 0}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:52px}
+.eyebrow{color:#8b7550;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:800;margin-bottom:12px}
+h2{font-size:clamp(2.5rem,5vw,4.2rem);line-height:1.02}
+.section-intro{max-width:450px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--paper);padding:32px;border-radius:var(--radius);border:1px solid var(--line);min-height:270px;transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.number{font-family:"Playfair Display",serif;font-size:1.2rem;color:#9b8456}
+.card h3{font-size:1.35rem;margin:55px 0 10px}
+.card p{color:var(--muted);font-size:.95rem}
+.dark{background:var(--deep);color:#fff}
+.dark .eyebrow{color:#d9b56d}.dark .section-intro{color:#c6d1cc}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.14)}
+.pillar{padding:28px;background:var(--deep);min-height:190px}
+.pillar b{font-size:2rem;font-family:"Playfair Display",serif;color:#e4c782}.pillar h3{margin:14px 0 7px}.pillar p{font-size:.87rem;color:#c2d0c9}
+.practices{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.practice{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:25px;background:var(--paper);border:1px solid var(--line);border-radius:22px}
+.practice-icon{width:52px;height:52px;border-radius:16px;background:#e7eee9;display:grid;place-items:center;font-size:1.3rem}
+.practice h3{margin-bottom:4px}.practice p{color:var(--muted);font-size:.9rem}
+.interactive{background:#eee9dc}
+.quote-panel{max-width:900px;margin:auto;text-align:center}
+.big-quote{font-family:"Playfair Display",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.2;min-height:120px;display:grid;place-items:center}
+.quote-source{color:var(--muted);margin:15px 0 28px}
+.quiz-wrap{max-width:760px;margin:auto;background:var(--paper);padding:36px;border-radius:30px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.progress{height:5px;background:#e7e8e4;border-radius:99px;margin-bottom:28px;overflow:hidden}.progress span{display:block;height:100%;background:var(--gold);transition:.3s}
+.q{font-family:"Playfair Display",serif;font-size:1.8rem;margin-bottom:20px}.options{display:grid;gap:10px}
+.option{border:1px solid var(--line);background:#fff;border-radius:15px;padding:15px 17px;text-align:left;font-weight:700;color:var(--ink);transition:.2s}.option:hover{border-color:var(--sage);background:#f7faf7}
+.result{text-align:center}.result .emoji{font-size:3rem}.result h3{font-family:"Playfair Display",serif;font-size:2rem;margin:8px 0}.result p{color:var(--muted);margin-bottom:20px}
+.wall-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px}
+.form{background:var(--deep);color:#fff;padding:32px;border-radius:28px}
+.form p{color:#c6d1cc;margin:8px 0 22px;font-size:.9rem}
+textarea{width:100%;min-height:145px;border:0;border-radius:16px;padding:16px;resize:vertical;outline:none;background:#fff}
+.form .btn{margin-top:12px;background:#fff;color:var(--deep)}
+.messages{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.message{background:var(--paper);border:1px solid var(--line);border-radius:21px;padding:21px}
+.message .mark{color:var(--gold);font-family:serif;font-size:2rem;line-height:.5}.message p{margin-top:10px;font-family:"Playfair Display",serif;font-size:1.05rem}
+footer{background:#14221c;color:#c9d3ce;padding:48px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}
+footer strong{color:#fff}footer small{color:#94a39c}
+.toast{position:fixed;z-index:200;bottom:24px;left:50%;transform:translate(-50%,25px);opacity:0;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:.85rem;transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){
+ .hero-grid{grid-template-columns:1fr}.visual{min-height:470px}.sun{right:50%;transform:translateX(50%)}.orbit{right:50%;transform:translateX(50%) rotate(-18deg)}.quote-card{left:8px}
+ .cards{grid-template-columns:1fr 1fr}.pillars{grid-template-columns:1fr 1fr}.wall-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+ .container{width:min(100% - 30px,1160px)}.nav{top:10px}.nav-inner{height:60px}.nav-links,.nav-cta{display:none}.menu{display:block}
+ .nav-links.open{display:flex;position:absolute;top:67px;left:0;right:0;background:rgba(255,253,248,.97);border:1px solid var(--line);border-radius:20px;padding:17px;flex-direction:column;gap:14px}
+ .hero{min-height:820px;padding-top:130px}.hero-grid{gap:15px}h1{font-size:clamp(3.3rem,17vw,5rem)}.hero-copy{font-size:1rem}
+ .actions{flex-direction:column;align-items:stretch}.btn{width:100%}.visual{min-height:410px}.sun{width:290px;height:290px}.orbit{width:350px;height:350px}.quote-card{width:280px;bottom:15px}.floating{display:none}
+ section{padding:78px 0}.section-top{display:block}.section-intro{margin-top:16px}.cards,.pillars,.practices,.messages{grid-template-columns:1fr}
+ .card{min-height:auto}.card h3{margin-top:35px}.quiz-wrap{padding:23px}.footer-inner{flex-direction:column;text-align:center}
+}
+
+/* Adorable visual upgrade */
+.photo-section{background:#fbfaf5}
+.photo-mosaic{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.photo-main,.photo-stack{position:relative}
+.photo-main img,.photo-stack img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-main{min-height:520px;border-radius:34px;overflow:hidden;box-shadow:var(--shadow)}
+.photo-main:after,.photo-stack figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,34,28,.62));pointer-events:none}
+.photo-main figcaption,.photo-stack figcaption{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;color:#fff}
+.photo-main figcaption strong{display:block;font-family:"Playfair Display",serif;font-size:1.65rem}
+.photo-main figcaption span,.photo-stack figcaption span{font-size:.82rem;opacity:.88}
+.photo-stack{display:grid;grid-template-rows:1fr 1fr;gap:18px}
+.photo-stack figure{position:relative;overflow:hidden;border-radius:28px;min-height:250px;box-shadow:0 15px 40px rgba(30,49,40,.10)}
+.photo-stack figcaption strong{display:block;font-size:1.05rem}
+.cute-note{margin-top:28px;display:flex;justify-content:center;align-items:center;gap:12px;color:#68736e;font-size:.9rem}
+.cute-heart{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#fff0f2;animation:floaty 3s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-5px) rotate(3deg)}}
+.adorable{background:linear-gradient(135deg,#fff6f0,#f4fbf5)}
+.adorable-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.little-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;text-align:center;box-shadow:0 12px 35px rgba(30,49,40,.07);transition:.25s}
+.little-card:hover{transform:translateY(-6px) rotate(-.5deg)}
+.sticker{font-size:2.4rem;width:72px;height:72px;margin:0 auto 15px;border-radius:22px;display:grid;place-items:center;background:#fff4c9}
+.little-card:nth-child(2) .sticker{background:#ffe9ef}.little-card:nth-child(3) .sticker{background:#e7f5ff}
+.little-card h3{margin-bottom:6px}.little-card p{font-size:.88rem;color:var(--muted)}
+.credit{margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);text-align:center;color:#9eaca5;font-size:.84rem}
+.credit strong{color:#fff;font-weight:800}
+@media(max-width:900px){.photo-mosaic{grid-template-columns:1fr}.photo-main{min-height:430px}.adorable-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.photo-main{min-height:330px}.photo-stack{grid-template-rows:230px 230px}.adorable-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner">
+  <a href="#home" class="brand"><span class="brand-mark">✦</span> Haven</a>
+  <div class="nav-links" id="links">
+   <a href="#meaning">Meaning</a><a href="#moments">Moments</a><a href="#pillars">Pillars</a><a href="#practices">Practices</a><a href="#quiz">Quiz</a>
+  </div>
+  <a href="#wall" class="nav-cta">Share a thought</a>
+  <button class="menu" id="menu">☰</button>
+ </div>
+</nav>
+
+<header class="hero" id="home">
+ <div class="container hero-grid">
+  <div>
+   <div class="kicker">The art of everyday happiness</div>
+   <h1>Make room for <em>joy.</em></h1>
+   <p class="hero-copy">Happiness isn't a finish line. It's found in the quiet mornings, honest conversations, small wins and moments we choose to notice.</p>
+   <div class="actions"><a class="btn primary" href="#meaning">Explore the idea ↓</a><button class="btn secondary" id="heroThought">A thought for today ✦</button></div>
+   <div class="hero-note"><span class="dot"></span> A calm corner of the internet for brighter days.</div>
+  </div>
+  <div class="visual" aria-hidden="true">
+   <div class="orbit"></div><div class="sun"></div>
+   <div class="quote-card"><div class="small">A gentle reminder</div><p>“There is something good worth noticing in today.”</p><span>Haven Journal · 01</span></div>
+   <div class="floating">breathe · notice · connect</div>
+  </div>
+ </div>
+</header>
+
+<section id="meaning">
+ <div class="container">
+  <div class="section-top"><div><div class="eyebrow">01 · Perspective</div><h2>What does happiness<br>really mean?</h2></div><p class="section-intro">It can mean different things to different people. Beyond a passing good mood, happiness can include contentment, purpose, connection and the ability to appreciate life as it is.</p></div>
+  <div class="cards">
+   <article class="card"><span class="number">01</span><h3>Joy</h3><p>The spark we feel in laughter, creativity, music, celebration and other moments that make life feel vivid.</p></article>
+   <article class="card"><span class="number">02</span><h3>Contentment</h3><p>The quieter feeling of being present with what we have instead of constantly waiting for the next thing.</p></article>
+   <article class="card"><span class="number">03</span><h3>Meaning</h3><p>The sense that our relationships, values, goals and everyday actions matter to us.</p></article>
+  </div>
+ </div>
+</section>
+
+
+<section class="photo-section" id="moments">
+ <div class="container">
+  <div class="section-top">
+   <div><div class="eyebrow">02 · Moments</div><h2>Happiness looks<br>different for everyone.</h2></div>
+   <p class="section-intro">Sometimes it's a sunrise. Sometimes it's a ridiculous laugh with friends. Sometimes it's simply a peaceful five minutes to yourself.</p>
+  </div>
+  <div class="photo-mosaic">
+   <figure class="photo-main">
+    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="Friends enjoying a happy moment together" loading="lazy">
+    <figcaption><strong>Good people, good memories.</strong><span>Connection is one of life's simplest treasures.</span></figcaption>
+   </figure>
+   <div class="photo-stack">
+    <figure>
+     <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85" alt="Colorful flowers in warm sunlight" loading="lazy">
+     <figcaption><strong>Notice the little things.</strong><span>🌼 Beauty often hides in ordinary places.</span></figcaption>
+    </figure>
+    <figure>
+     <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="Peaceful landscape at golden hour" loading="lazy">
+     <figcaption><strong>Pause. Breathe. Look around.</strong><span>🌤️ A quiet moment can reset your day.</span></figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="cute-note"><span class="cute-heart">♡</span> Happiness can be tiny, ordinary and completely worth noticing.</div>
+ </div>
+</section>
+
+<section class="dark" id="pillars">
+ <div class="container">
+  <div class="section-top"><div><div class="eyebrow">02 · The foundations</div><h2>Four pillars of<br>wellbeing.</h2></div><p class="section-intro">Happiness isn't one single emotion. These everyday foundations can support a life that feels more balanced and meaningful.</p></div>
+  <div class="pillars">
+   <div class="pillar"><b>01</b><h3>Connection</h3><p>People who listen, support and share life with us.</p></div>
+   <div class="pillar"><b>02</b><h3>Gratitude</h3><p>Training attention toward things we genuinely value.</p></div>
+   <div class="pillar"><b>03</b><h3>Purpose</h3><p>Goals and activities that give our days direction.</p></div>
+   <div class="pillar"><b>04</b><h3>Care</h3><p>Rest, healthy routines and kindness toward ourselves.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="practices">
+ <div class="container">
+  <div class="section-top"><div><div class="eyebrow">03 · Everyday practices</div><h2>Small actions.<br>Real moments.</h2></div><p class="section-intro">You don't need a dramatic life change. Try one small practice and let consistency do the rest.</p></div>
+  <div class="practices">
+   <div class="practice"><div class="practice-icon">🌿</div><div><h3>Step outside</h3><p>Take a short walk or simply pause outdoors and notice your surroundings.</p></div></div>
+   <div class="practice"><div class="practice-icon">💬</div><div><h3>Reach out</h3><p>Send a message, share a laugh or have an honest conversation with someone you trust.</p></div></div>
+   <div class="practice"><div class="practice-icon">✍️</div><div><h3>Write one good thing</h3><p>At the end of the day, record one moment you appreciated.</p></div></div>
+   <div class="practice"><div class="practice-icon">🎧</div><div><h3>Make space for joy</h3><p>Give yourself time for music, art, sport, reading or another hobby you enjoy.</p></div></div>
+   <div class="practice"><div class="practice-icon">🌙</div><div><h3>Protect your rest</h3><p>Regular sleep and breaks help create the energy to enjoy and engage with life.</p></div></div>
+   <div class="practice"><div class="practice-icon">🤍</div><div><h3>Do a small kindness</h3><p>A thoughtful action can strengthen connection and brighten someone's day.</p></div></div>
+  </div>
+ </div>
+</section>
+
+
+<section class="adorable">
+ <div class="container">
+  <div class="section-top">
+   <div><div class="eyebrow">04 · Tiny joys</div><h2>Collect little<br>reasons to smile.</h2></div>
+   <p class="section-intro">A happier life doesn't have to be grand. Keep a mental collection of the tiny things that make an ordinary day feel special.</p>
+  </div>
+  <div class="adorable-grid">
+   <article class="little-card"><div class="sticker">🌷</div><h3>Fresh beginnings</h3><p>Every morning gives you another chance to notice something beautiful.</p></article>
+   <article class="little-card"><div class="sticker">🧸</div><h3>Comfort moments</h3><p>Your favorite song, cozy blanket, warm drink or a familiar place can be enough.</p></article>
+   <article class="little-card"><div class="sticker">🦋</div><h3>Little surprises</h3><p>Leave some room for curiosity, playfulness and unexpected happy moments.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="interactive">
+ <div class="container quote-panel">
+  <div class="eyebrow">04 · Daily pause</div><h2>One thought to carry with you.</h2>
+  <div class="big-quote" id="quote">“You don't need a perfect day to find a meaningful moment.”</div>
+  <div class="quote-source" id="source">— Haven</div>
+  <button class="btn primary" id="quoteBtn">Give me another ✦</button>
+ </div>
+</section>
+
+<section id="quiz">
+ <div class="container">
+  <div class="section-top"><div><div class="eyebrow">05 · Reflection</div><h2>Your kind of<br>happy.</h2></div><p class="section-intro">A short, playful quiz to reflect on the things that naturally bring you energy and satisfaction.</p></div>
+  <div class="quiz-wrap" id="quizBox"></div>
+ </div>
+</section>
+
+<section id="wall">
+ <div class="container">
+  <div class="section-top"><div><div class="eyebrow">06 · Community</div><h2>The happiness<br>wall.</h2></div><p class="section-intro">What is one small thing that made you smile recently? Add it below and leave a little positivity behind.</p></div>
+  <div class="wall-grid">
+   <div class="form"><h3>Leave a note</h3><p>Your message appears on this page and stays here while the page is open.</p><textarea id="message" maxlength="180" placeholder="One thing that makes me happy is..."></textarea><button class="btn" id="post">Add to the wall ✦</button></div>
+   <div class="messages" id="messages">
+    <div class="message"><div class="mark">“</div><p>A slow evening, good music and absolutely nowhere to rush.</p></div>
+    <div class="message"><div class="mark">“</div><p>Laughing with people who make ordinary moments memorable.</p></div>
+    <div class="message"><div class="mark">“</div><p>That feeling when something I worked hard on finally clicks.</p></div>
+    <div class="message"><div class="mark">“</div><p>Warm sunlight through the window on a quiet morning.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <div class="container footer-inner">
+  <div><strong>Haven</strong><br><small>A little more room for joy.</small></div>
+  <small>Made with curiosity, kindness & ✦</small>
+ </div>
+ <div class="container credit">This website is designed by <strong>Yuvraj Singh</strong> ✦</div>
+</footer>
+<div class="toast" id="toast">Your thought has been added ✦</div>
+
+<script>
+const quotes=[
+["“You don't need a perfect day to find a meaningful moment.”","— Haven"],
+["“Pay attention to what makes an ordinary day feel like yours.”","— Haven"],
+["“Gratitude is noticing that some things are already enough.”","— Haven"],
+["“Connection turns moments into memories.”","— Haven"],
+["“Make space for the things that make you feel alive.”","— Haven"],
+["“A small act of kindness can travel further than you think.”","— Haven"]
+];
+function newQuote(){let q=quotes[Math.floor(Math.random()*quotes.length)];document.getElementById("quote").textContent=q[0];document.getElementById("source").textContent=q[1]}
+quoteBtn.onclick=newQuote;heroThought.onclick=()=>{newQuote();document.getElementById("quote").scrollIntoView({behavior:"smooth",block:"center"})};
+
+const qs=[
+ {q:"Which moment sounds most restorative?",a:["A long conversation with someone I trust","Making or learning something","A quiet walk outdoors","Laughing and doing something spontaneous"],k:["connection","creative","nature","fun"]},
+ {q:"What gives you the strongest sense of satisfaction?",a:["Being there for someone","Finishing a personal project","Discovering a new place or idea","Sharing a great experience"],k:["connection","creative","nature","fun"]},
+ {q:"Pick your ideal little win:",a:["Feeling understood","Creating something I'm proud of","Finding a beautiful peaceful moment","Making a memory with others"],k:["connection","creative","nature","fun"]}
+];
+let step=0,score={connection:0,creative:0,nature:0,fun:0};
+function renderQuiz(){
+ const box=document.getElementById("quizBox");
+ if(step===qs.length){
+  let win=Object.keys(score).sort((a,b)=>score[b]-score[a])[0];
+  let r={
+   connection:["The Connector 🤝","Meaningful relationships and shared moments seem to be a big part of what makes life feel good to you."],
+   creative:["The Creator 🎨","Curiosity, learning and making things seem to be where your spark comes alive."],
+   nature:["The Explorer 🌿","Calm, discovery and the world around you seem to recharge your sense of wonder."],
+   fun:["The Joymaker ✦","Laughter, energy and memorable experiences seem to bring out your happiest side."]
+  }[win];
+  box.innerHTML=`<div class="result"><div class="emoji">✦</div><h3>${r[0]}</h3><p>${r[1]}</p><button class="btn primary" onclick="restart()">Take it again</button></div>`;return;
+ }
+ let q=qs[step];
+ box.innerHTML=`<div class="progress"><span style="width:${step/qs.length*100}%"></span></div><div class="q">${q.q}</div><div class="options">${q.a.map((x,i)=>`<button class="option" onclick="answer(${i})">${x}</button>`).join("")}</div>`;
+}
+function answer(i){score[qs[step].k[i]]++;step++;renderQuiz()}
+function restart(){step=0;score={connection:0,creative:0,nature:0,fun:0};renderQuiz()}
+renderQuiz();
+
+const toast=document.getElementById("toast");
+document.getElementById("post").onclick=()=>{
+ const input=document.getElementById("message"),text=input.value.trim();
+ if(!text){input.focus();return}
+ const card=document.createElement("div");card.className="message";
+ const mark=document.createElement("div");mark.className="mark";mark.textContent="“";
+ const p=document.createElement("p");p.textContent=text;
+ card.append(mark,p);document.getElementById("messages").prepend(card);input.value="";
+ toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2200);
+};
+document.getElementById("menu").onclick=()=>document.getElementById("links").classList.toggle("open");
+document.querySelectorAll(".nav-links a").forEach(a=>a.onclick=()=>document.getElementById("links").classList.remove("open"));
+</script>
+</body>
+</html>
